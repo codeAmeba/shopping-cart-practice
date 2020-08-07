@@ -1,19 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import Header from '../Components/Header';
+
 import { productItems } from '../productItems';
 
 function Products() {
-	const [ productList, setProductList ] = useState([]);
+	const [ itemIndex, setItemIndex ] = useState(0);
+	const [ productList, setProductList ] = useState(productItems.slice(0, 5));
 
-	useEffect(() => {
-		getProductList();
-	}, []);
+	const getMoreProducts = useCallback(
+		() => {
+			let scrollHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+			let scrollTop = Math.max(document.documentElement.scrollTop, document.body.scrollTop);
+			let clientHeight = document.documentElement.clientHeight;
+
+			if (scrollTop + clientHeight === scrollHeight) {
+				setItemIndex(itemIndex + 5);
+				setProductList(productList.concat(productItems.slice(itemIndex + 5, itemIndex + 10)));
+			}
+		},
+		[ itemIndex, productList ]
+	);
+
+	useEffect(
+		() => {
+			window.addEventListener('scroll', getMoreProducts);
+			return () => window.removeEventListener('scroll', getMoreProducts);
+		},
+		[ getMoreProducts, productList ]
+	);
+
 	console.log(productList);
-
-	const getProductList = () => {
-		setProductList([ ...productItems ]);
-	};
 
 	return (
 		<React.Fragment>

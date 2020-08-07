@@ -6,7 +6,9 @@ function Header() {
 	return (
 		<HeaderContainer>
 			<div>
-				<img src={Logo} alt='logo' />
+				<a href='/'>
+					<img src={Logo} alt='logo' />
+				</a>
 			</div>
 			<div>
 				<ul>
