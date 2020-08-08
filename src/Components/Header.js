@@ -1,22 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import Logo from '../Images/logo.png';
 
 function Header() {
 	return (
 		<HeaderContainer>
 			<div>
-				<a href='/'>
+				<Link to='/'>
 					<img src={Logo} alt='logo' />
-				</a>
+				</Link>
 			</div>
 			<div>
 				<ul>
 					<li>
-						<a href='/products'>Products</a>
+						<Link to='/products'>Products</Link>
 					</li>
 					<li>
-						<a href='/cart'>Cart</a>
+						<Link to='/cart'>Cart</Link>
 					</li>
 				</ul>
 			</div>
@@ -34,6 +35,7 @@ const HeaderContainer = styled.header`
 	padding: 20px 20px;
 	position: fixed;
 	top: 0;
+	z-index: 20;
 
 	img {
 		width: 100px;

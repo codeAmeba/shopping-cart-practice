@@ -4,10 +4,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Main from './Pages/Main';
 import Products from './Pages/Products';
 import Cart from './Pages/Cart';
+import Header from './Components/Header';
 
 function Routes() {
 	return (
 		<Router>
+			<Header />
 			<Switch>
 				<Route exact path='/' component={Main} />
 				<Route exact path='/products' component={Products} />

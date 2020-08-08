@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
-import Header from '../Components/Header';
-
+import { GiShoppingCart } from 'react-icons/gi';
 import { productItems } from '../productItems';
 
 function Products() {
@@ -30,11 +29,8 @@ function Products() {
 		[ getMoreProducts, productList ]
 	);
 
-	console.log(productList);
-
 	return (
 		<React.Fragment>
-			<Header />
 			<ProductsContainer data-testid='ProductsContainer'>
 				{productList.map(product => (
 					<section key={product.id} value={product.score}>
@@ -42,8 +38,11 @@ function Products() {
 							<img src={product.coverImage} alt={product.title} />
 						</div>
 						<div className='textWrapper'>
-							<h4>{product.title}</h4>
-							<p>{product.price}</p>
+							<div>
+								<h4>{product.title}</h4>
+								<p>{product.price}</p>
+							</div>
+							<GiShoppingCart className='cartIcon' />
 						</div>
 					</section>
 				))}
@@ -65,22 +64,41 @@ const ProductsContainer = styled.main`
 		width: 70%;
 		margin-bottom: 50px;
 		overflow: hidden;
+		border-radius: 5px;
+		position: relative;
+
+		.cartIcon {
+			font-size: 25px;
+			cursor: pointer;
+			color: rgba(0, 0, 0, 1);
+
+			&:hover {
+				color: rgba(0, 0, 0, 0.6);
+			}
+		}
 
 		.imgWrapper {
 			width: 100%;
+			overflow: hidden;
+			border-radius: 5px;
 
 			img {
 				width: 100%;
 				height: auto;
-				transition: 0.4s ease-in-out;
-			}
-			img:hover {
-				transform: scale(1.1);
+				object-fit: cover;
+				transition: 0.3s ease-in-out;
+				border-radius: 5px;
+
+				&:hover {
+					transform: scale(1.1);
+				}
 			}
 		}
 
 		.textWrapper {
 			padding-top: 30px;
+			display: flex;
+			justify-content: space-between;
 		}
 	}
 `;
