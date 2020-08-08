@@ -61,10 +61,15 @@ const ProductsContainer = styled.main`
 
 	section {
 		width: 70%;
+		margin-bottom: 50px;
+		box-shadow: 5px 3px 15px rgba(0, 0, 0, 0.5);
+		border-radius: 10px;
 
 		img {
 			width: 100%;
 			height: auto;
+			border-top-left-radius: 10px;
+			border-top-right-radius: 10px;
 		}
 	}
 `;

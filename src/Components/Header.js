@@ -31,10 +31,10 @@ const HeaderContainer = styled.header`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	border-bottom: 1px solid rgba(0, 0, 0, 1);
 	padding: 20px 20px;
 	position: fixed;
 	top: 0;
+	box-shadow: 5px 3px 15px rgba(0, 0, 0, 0.5);
 
 	img {
 		width: 120px;
