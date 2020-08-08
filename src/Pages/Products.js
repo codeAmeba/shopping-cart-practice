@@ -62,14 +62,23 @@ const ProductsContainer = styled.main`
 	section {
 		width: 70%;
 		margin-bottom: 50px;
-		box-shadow: 5px 3px 15px rgba(0, 0, 0, 0.5);
-		border-radius: 10px;
+		overflow: hidden;
 
 		img {
 			width: 100%;
 			height: auto;
-			border-top-left-radius: 10px;
-			border-top-right-radius: 10px;
+			transition: 0.8s ease-in-out;
+			transition-delay: 0.1s;
+		}
+
+		div {
+			padding-top: 30px;
+		}
+
+		&:hover {
+			img {
+				transform: scale(1.1);
+			}
 		}
 	}
 `;
