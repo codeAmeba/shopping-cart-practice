@@ -38,8 +38,10 @@ function Products() {
 			<ProductsContainer data-testid='ProductsContainer'>
 				{productList.map(product => (
 					<section key={product.id} value={product.score}>
-						<img src={product.coverImage} alt={product.title} />
-						<div>
+						<div className='imgWrapper'>
+							<img src={product.coverImage} alt={product.title} />
+						</div>
+						<div className='textWrapper'>
 							<h4>{product.title}</h4>
 							<p>{product.price}</p>
 						</div>
@@ -64,21 +66,21 @@ const ProductsContainer = styled.main`
 		margin-bottom: 50px;
 		overflow: hidden;
 
-		img {
+		.imgWrapper {
 			width: 100%;
-			height: auto;
-			transition: 0.8s ease-in-out;
-			transition-delay: 0.1s;
-		}
 
-		div {
-			padding-top: 30px;
-		}
-
-		&:hover {
 			img {
+				width: 100%;
+				height: auto;
+				transition: 0.4s ease-in-out;
+			}
+			img:hover {
 				transform: scale(1.1);
 			}
+		}
+
+		.textWrapper {
+			padding-top: 30px;
 		}
 	}
 `;
