@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
-import { GiShoppingCart } from 'react-icons/gi';
 import { productItems } from '../productItems';
 
 function Products() {
 	const [ itemIndex, setItemIndex ] = useState(0);
 	const [ productList, setProductList ] = useState(productItems.slice(0, 5));
+	const [ cart, setCart ] = useState([]);
 
 	const getMoreProducts = useCallback(
 		() => {
@@ -29,6 +29,14 @@ function Products() {
 		[ getMoreProducts, productList ]
 	);
 
+	const addCart = id => {
+		if (cart.length > 2) {
+			return alert('장바구니에는 최대 3개만 담을 수 있습니다.');
+		} else {
+			setCart([ ...cart, { id, amount: 1 } ]);
+		}
+	};
+
 	return (
 		<React.Fragment>
 			<ProductsContainer data-testid='ProductsContainer'>
@@ -40,9 +48,11 @@ function Products() {
 						<div className='textWrapper'>
 							<div>
 								<h4>{product.title}</h4>
-								<p>{product.price}</p>
+								<p>{product.price} 원</p>
 							</div>
-							<GiShoppingCart className='cartIcon' />
+							<button onClick={() => addCart(product.id)} type='button'>
+								담기
+							</button>
 						</div>
 					</section>
 				))}
@@ -67,13 +77,19 @@ const ProductsContainer = styled.main`
 		border-radius: 5px;
 		position: relative;
 
-		.cartIcon {
-			font-size: 25px;
+		button {
+			width: 50px;
+			height: 25px;
+			font-size: 14px;
+			margin-left: 20px;
 			cursor: pointer;
-			color: rgba(0, 0, 0, 1);
+			background-color: #fff;
+			border: 1px solid rgba(0, 0, 0, 1);
+			border-radius: 3px;
 
 			&:hover {
-				color: rgba(0, 0, 0, 0.6);
+				color: #fff;
+				background-color: rgba(0, 0, 0, 1);
 			}
 		}
 
