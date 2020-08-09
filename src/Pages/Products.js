@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
+import { GiShoppingCart } from 'react-icons/gi';
 import { productItems } from '../productItems';
 
 function Products() {
@@ -37,6 +38,8 @@ function Products() {
 		}
 	};
 
+	console.log(cart);
+
 	return (
 		<React.Fragment>
 			<ProductsContainer data-testid='ProductsContainer'>
@@ -50,9 +53,7 @@ function Products() {
 								<h4>{product.title}</h4>
 								<p>{product.price} 원</p>
 							</div>
-							<button onClick={() => addCart(product.id)} type='button'>
-								담기
-							</button>
+							<GiShoppingCart className='cartIcon' onClick={() => addCart(product.id)} />
 						</div>
 					</section>
 				))}
@@ -64,7 +65,7 @@ function Products() {
 const ProductsContainer = styled.main`
 	width: 100%;
 	height: 100%;
-	margin-top: 75px;
+	margin-top: 100px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -77,19 +78,14 @@ const ProductsContainer = styled.main`
 		border-radius: 5px;
 		position: relative;
 
-		button {
-			width: 50px;
-			height: 25px;
-			font-size: 14px;
+		.cartIcon {
+			font-size: 30px;
 			margin-left: 20px;
+			color: rgba(0, 0, 0, 1);
 			cursor: pointer;
-			background-color: #fff;
-			border: 1px solid rgba(0, 0, 0, 1);
-			border-radius: 3px;
 
 			&:hover {
-				color: #fff;
-				background-color: rgba(0, 0, 0, 1);
+				color: #0677aa;
 			}
 		}
 
