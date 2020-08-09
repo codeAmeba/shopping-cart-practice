@@ -44,3 +44,7 @@ Header 컴포넌트를 만들어 각 페이지 삽입하고 react-router-dom의 
 ### 20.08.09
 useState를 사용하여 비어있는 장바구니를 만들고, 상품의 카트 아이콘을 클릭하면 해당 상품의 id와 수량을 추가하는 함수를 만들었다. console.log()로 출력해보니 제대로 추가되는 게 보인다. 음... 그런데 이걸 어떻게 Cart 페이지에 전달하지?
 외부에서 공통적으로 사용되는 상태를 관리해야 할 필요성을 느끼게 되었고, 그것이 곧 Redux임을 깨닫게 되었다.
+
+**참고:**
+- [React + Redux 플로우의 이해](https://medium.com/@ca3rot/%EC%95%84%EB%A7%88-%EC%9D%B4%EA%B2%8C-%EC%A0%9C%EC%9D%BC-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-%EC%89%AC%EC%9A%B8%EA%B1%B8%EC%9A%94-react-redux-%ED%94%8C%EB%A1%9C%EC%9A%B0%EC%9D%98-%EC%9D%B4%ED%95%B4-1585e911a0a6)
+- [React에서 Redux 사용하기 - velopert](https://velog.io/@velopert/Redux-3-%EB%A6%AC%EB%8D%95%EC%8A%A4%EB%A5%BC-%EB%A6%AC%EC%95%A1%ED%8A%B8%EC%99%80-%ED%95%A8%EA%BB%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-nvjltahf5e)
