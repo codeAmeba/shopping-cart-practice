@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 import { actionCreators } from '../store';
 import { productItems } from '../data/productItems';
 
-function Cart({ cart, deleteCart }) {
+function Cart({ cart, deleteCart, addAmount }) {
   const [productsInCart, setProductsInCart] = useState();
   const [totalPrice, setTotalPrice] = useState(0);
+  // const [productAmount, setProductAmount] = useState(1);
 
   useEffect(() => {
     setProductsInCart(
@@ -31,6 +32,12 @@ function Cart({ cart, deleteCart }) {
     deleteCart(id);
   };
 
+  const handleChange = (id, amount) => {
+    // const amount = e.target.value;
+    // addAmount(id, amount);
+    console.log(productsInCart);
+  };
+
   return (
     <>
       <CartContainer data-testid='CartContainer'>
@@ -45,6 +52,16 @@ function Cart({ cart, deleteCart }) {
               </div>
               <div className='priceWrapper'>
                 <p>{product.price} 원</p>
+              </div>
+              <div>
+                <label htmlFor='amount'>수량</label>
+                <input
+                  onChange={() => handleChange()}
+                  value='1'
+                  id='amount'
+                  min='1'
+                  type='number'
+                />
               </div>
               <button onClick={() => handleClick(product.id)}>삭제</button>
             </section>
@@ -115,6 +132,10 @@ const CartContainer = styled.main`
       }
     }
 
+    input {
+      width: 35px;
+    }
+
     button {
       width: 50px;
       height: 25px;
@@ -133,7 +154,7 @@ const CartContainer = styled.main`
   }
 
   aside {
-    width: 95%;
+    width: 100%;
     height: 200px;
     padding: 20px;
     background-color: rgba(245, 245, 245, 1);
@@ -156,6 +177,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     deleteCart: (id) => dispatch(actionCreators.deleteCart(id)),
+    addAmount: (id, amount) => dispatch(actionCreators.addAmount(id, amount)),
   };
 };
 
