@@ -5,7 +5,8 @@ import { actionCreators } from '../store';
 import { productItems } from '../data/productItems';
 
 function Cart({ cart, deleteCart }) {
-  const [productsInCart, setProductsInCart] = useState();
+  const [productsInCart, setProductsInCart] = useState(null);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     setProductsInCart(
@@ -15,6 +16,16 @@ function Cart({ cart, deleteCart }) {
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cart]);
+
+  useEffect(() => {
+    let total = 0;
+    if (!productsInCart) {
+      return;
+    } else {
+      productsInCart.forEach((product) => (total += product.price));
+    }
+    setTotalPrice(total);
+  }, [productsInCart]);
 
   const handleClick = (id) => {
     deleteCart(id);
@@ -38,6 +49,13 @@ function Cart({ cart, deleteCart }) {
               <button onClick={() => handleClick(product.id)}>삭제</button>
             </section>
           ))}
+
+        <section>
+          <div className='couponList'></div>
+          <div className='totalPrice'>
+            <h4>총액: {totalPrice} 원</h4>
+          </div>
+        </section>
       </CartContainer>
     </>
   );
@@ -121,7 +139,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // eslint-disable-next-line no-undef
     deleteCart: (id) => dispatch(actionCreators.deleteCart(id)),
   };
 };
