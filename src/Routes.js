@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Main from './Pages/Main';
-import Products from './Pages/Products';
-import Cart from './Pages/Cart';
+import Main from './Components/Main';
+import Products from './Components/Products';
+import Cart from './Components/Cart';
 import Header from './Components/Header';
 
 function Routes() {
