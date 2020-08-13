@@ -5,7 +5,7 @@ import { actionCreators } from '../store';
 import { productItems } from '../data/productItems';
 
 function Cart({ cart, deleteCart }) {
-  const [productsInCart, setProductsInCart] = useState(null);
+  const [productsInCart, setProductsInCart] = useState();
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
@@ -50,12 +50,12 @@ function Cart({ cart, deleteCart }) {
             </section>
           ))}
 
-        <section>
+        <aside>
           <div className='couponList'></div>
           <div className='totalPrice'>
             <h4>총액: {totalPrice} 원</h4>
           </div>
-        </section>
+        </aside>
       </CartContainer>
     </>
   );
@@ -129,6 +129,22 @@ const CartContainer = styled.main`
         border: none;
         color: #fff;
       }
+    }
+  }
+
+  aside {
+    width: 95%;
+    height: 200px;
+    padding: 20px;
+    background-color: rgba(245, 245, 245, 1);
+    bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h4 {
+      font-size: 25px;
+      letter-spacing: 2px;
     }
   }
 `;
